@@ -1,17 +1,51 @@
+# Partie1_Concepts/encapsulation.py
 
-from produit import Produit
+class Produit:
+    def __init__(self, nom, reference, prix, quantite):
+        # Attributs privés (encapsulation)
+        self.__nom = nom
+        self.__reference = reference
+        self.__prix = prix
+        self.__quantite = quantite
 
-# Création d'un produit
-produit2 = Produit("Imprimante", "IMP456", 150, 8)
+    # Getters
+    def get_nom(self):
+        return self.__nom
 
-print("--- Encapsulation exemple ---")
-# Affichage des données via méthode
-produit2.afficher()
+    def get_reference(self):
+        return self.__reference
 
-# Mise à jour du prix et quantité en utilisant setter
-produit2.set_prix(120)
-produit2.set_quantite(12)
+    def get_prix(self):
+        return self.__prix
 
-print("\nAprès modification :")
-produit2.afficher()
+    def get_quantite(self):
+        return self.__quantite
 
+    # Setters
+    def set_nom(self, nom):
+        self.__nom = nom
+
+    def set_reference(self, reference):
+        self.__reference = reference
+
+    def set_prix(self, prix):
+        self.__prix = prix
+
+    def set_quantite(self, quantite):
+        self.__quantite = quantite
+
+# Exemple d'exécution
+if __name__ == "__main__":
+    produit = Produit("Clavier", "CLV001", 25, 100)
+    
+    print("--- Avant modification ---")
+    print(f"Nom : {produit.get_nom()}")
+    print(f"Prix : {produit.get_prix()}$")
+    
+    # Modification via setters
+    produit.set_nom("Clavier Gamer")
+    produit.set_prix(45)
+    
+    print("\n--- Après modification ---")
+    print(f"Nom : {produit.get_nom()}")
+    print(f"Prix : {produit.get_prix()}$")

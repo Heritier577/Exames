@@ -1,5 +1,6 @@
 class Produit:
-    def _init_(self, nom, reference, prix, quantite):
+    def __init__(self, nom, reference, prix, quantite=0):
+        # Attributs privés (encapsulation)
         self.__nom = nom
         self.__reference = reference
         self.__prix = prix
@@ -31,27 +32,6 @@ class Produit:
     def set_quantite(self, quantite):
         self.__quantite = quantite
 
-    # Méthode pour ajouter un produit
-    def ajouter(self, quantite_initiale=0):
-        if quantite_initiale > 0:
-            self.__quantite += quantite_initiale
-            print(f"{quantite_initiale} unités de {self.__nom} ajoutées au stock.")
-        else:
-            print(f"Produit {self.__nom} ajouté sans quantité supplémentaire.")
-
-    # Supprimer un produit
-    def supprimer(self):
-        print(f"Produit {self.__nom} supprimé du stock.")
-
-    # Mettre à jour la quantité
-    def mettre_a_jour(self, nouvelle_quantite):
-        self.__quantite = nouvelle_quantite
-        print(f"Quantité de {self._nom} mise à jour à {self._quantite} unités.")
-
-    # Afficher les informations du produit
+    # Méthode pour afficher les détails du produit
     def afficher(self):
-        print(f"Produit : {self.__nom}")
-        print(f"Référence : {self.__reference}")
-        print(f"Prix : {self.__prix} $")
-        print(f"Quantité : {self.__quantite}")
-
+        print(f"Nom : {self.__nom} | Référence : {self.__reference} | Prix : {self.__prix}$ | Quantité : {self.__quantite}")

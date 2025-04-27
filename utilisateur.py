@@ -1,5 +1,6 @@
 class Utilisateur:
-    def _init_(self, nom, role):
+    def __init__(self, nom, role):
+        # Attributs privés
         self.__nom = nom
         self.__role = role
 
@@ -10,23 +11,25 @@ class Utilisateur:
     def get_role(self):
         return self.__role
 
-    # Méthodes
-    def se_connecter(self):
-        print(f"{self._nom} est connecté en tant que {self._role}.")
-
-    def se_deconnecter(self):
-        print(f"{self.__nom} est déconnecté.")
-
+    # Méthode générique
     def afficher_info(self):
-        print(f"Utilisateur : {self._nom} - Rôle : {self._role}")
+        print(f"Utilisateur : {self.__nom}, Rôle : {self.__role}")
 
-# Sous-classe : GestionnaireStock
+# Sous-classe : Gestionnaire de Stock
 class GestionnaireStock(Utilisateur):
     def afficher_info(self):
         print(f"Gestionnaire de Stock : {self.get_nom()}")
 
-# Sous-classe : EmployeMagasin
+# Sous-classe : Employe de Magasin
 class EmployeMagasin(Utilisateur):
     def afficher_info(self):
-        print(f"Employé du Magasin : {self.get_nom()}")
+        print(f"Employé de Magasin : {self.get_nom()}")
 
+# Exemple d'exécution
+if __name__ == "__main__":
+    utilisateur1 = GestionnaireStock("Alice", "Gestionnaire")
+    utilisateur2 = EmployeMagasin("Bob", "Employé")
+
+    print("--- Informations des utilisateurs ---")
+    utilisateur1.afficher_info()
+    utilisateur2.afficher_info()

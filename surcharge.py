@@ -1,14 +1,35 @@
-from produit import Produit
+class Produit:
+    def __init__(self, nom, reference, prix, quantite=0):
+        self.__nom = nom
+        self.__reference = reference
+        self.__prix = prix
+        self.__quantite = quantite
 
-# Création d'un produit
-produit1 = Produit("Ordinateur Portable", "ORD123", 800, 5)
+    def afficher(self):
+        print(f"Nom : {self.__nom} | Référence : {self.__reference} | Prix : {self.__prix}$ | Quantité : {self.__quantite}")
 
-# Utilisation de la surcharge
-print("--- Surcharge exemple ---")
-produit1.ajouter(10)  # Ajout de 10 unités
-produit1.ajouter()    # Ajout sans spécifier une quantité
+    # Méthode surchargée : Ajouter avec ou sans paramètre
+    def ajouter(self, quantite=0):
+        if quantite > 0:
+            self.__quantite += quantite
+            print(f"{quantite} unités ajoutées. Nouvelle quantité : {self.__quantite}")
+        else:
+            print(f"Produit ajouté sans modification de quantité.")
 
-# Résultat final
-produit1.afficher()
+# Exemple d'exécution
+if __name__ == "__main__":
+    produit = Produit("Souris", "MSE123", 15, 10)
+    
+    print("--- Avant ajout ---")
+    produit.afficher()
+
+    print("\n--- Ajout de 5 unités ---")
+    produit.ajouter(5)
+    produit.afficher()
+
+    print("\n--- Ajout sans spécifier de quantité ---")
+    produit.ajouter()
+    produit.afficher()
+
 
 

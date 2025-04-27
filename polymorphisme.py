@@ -1,14 +1,29 @@
-from utilisateur import GestionnaireStock, EmployeMagasin
+class Utilisateur:
+    def __init__(self, nom):
+        self.__nom = nom
 
-print("--- Polymorphisme exemple ---")
+    def get_nom(self):
+        return self.__nom
 
-# Création des objets
-utilisateur1 = GestionnaireStock("Alice", "Gestionnaire de stock")
-utilisateur2 = EmployeMagasin("Bob", "Employé de magasin")
+    def afficher_info(self):
+        print(f"Utilisateur : {self.__nom}")
 
-# Liste d'utilisateurs
-utilisateurs = [utilisateur1, utilisateur2]
+class GestionnaireStock(Utilisateur):
+    def afficher_info(self):
+        print(f"Gestionnaire de stock : {self.get_nom()}")
 
-# Affichage polymorphique
-for utilisateur in utilisateurs:
-    utilisateur.afficher_info()
+class EmployeMagasin(Utilisateur):
+    def afficher_info(self):
+        print(f"Employé de magasin : {self.get_nom()}")
+
+# Exemple d'exécution
+if __name__ == "__main__":
+    # Polymorphisme : même méthode afficher_info mais comportement différent
+    utilisateurs = [
+        GestionnaireStock("Alice"),
+        EmployeMagasin("Bob")
+    ]
+
+    print("--- Exemple de Polymorphisme ---")
+    for utilisateur in utilisateurs:
+        utilisateur.afficher_info()
